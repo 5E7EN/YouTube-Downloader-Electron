@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+        <link rel="stylesheet" href="./assets/css/index.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+        <script defer src="./assets/js/download.js"></script>
+    </head>
+    <body>
+        <div class="content">
+            <div class="container">
+                <h3>YouTube Video Downloader</h3>
+
+                <div id="statusMsg" style="font-weight: bolder;"></div>
+
+                <div class="input-field col s6">
+                    <input placeholder="Enter a video URL..." id="downloadUrl" type="text" class="validate" />
+                </div>
+
+                <button id="downloadBtn" class="btn waves-effect waves-light" type="submit" name="action">
+                    Download
+                    <i class="material-icons right">file_download</i>
+                </button>
+
+                <div id="loader">
+                    <div class="progress">
+                        <div class="indeterminate"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer teal page-footer">
+            <div class="footer-copyright">
+                <div class="container">
+                    © 2020 M. Simon
+                    <a id="websiteLink" class="grey-text text-lighten-4 right" href="">More Tools</a>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>
