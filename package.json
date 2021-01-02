@@ -1,59 +1,39 @@
 {
-    "name": "musicdownloader",
-    "productName": "musicdownloader",
-    "version": "1.0.0",
+    "name": "youtubedownloader",
+    "productName": "Youtube Downloader",
+    "version": "2.0.0",
     "description": "YouTube Video Downloader",
+    "author": "M Simon",
     "main": "src/index.js",
     "scripts": {
-        "start": "electron-forge start",
-        "package": "electron-forge package",
-        "make": "electron-forge make",
-        "publish": "electron-forge publish",
-        "lint": "echo \"No linting configured\""
+        "start": "electron .",
+        "pack": " electron-builder build --dir",
+        "pack:win": "electron-builder build --dir --win --x64",
+        "build": "electron-builder build",
+        "build:win": "electron-builder build --win nsis-web --x64"
     },
-    "keywords": [],
-    "author": "M. Simon <ssmsimon11@gmail.com>",
     "license": "MIT",
-    "config": {
-        "forge": {
-            "packagerConfig": {},
-            "makers": [
-                {
-                    "name": "@electron-forge/maker-squirrel",
-                    "config": {
-                        "name": "musicdownloader"
-                    }
-                },
-                {
-                    "name": "@electron-forge/maker-zip",
-                    "platforms": [
-                        "darwin"
-                    ]
-                },
-                {
-                    "name": "@electron-forge/maker-deb",
-                    "config": {}
-                },
-                {
-                    "name": "@electron-forge/maker-rpm",
-                    "config": {}
-                }
-            ],
-            "electronPackagerConfig": {
-                "icon": "./src/assets/images/icon.png"
-            }
+    "build": {
+        "appId": "org.5e7en.youtubedownloader",
+        "files": [
+            "**/*",
+            "build/**",
+            "node_modules/**/*"
+        ],
+        "win": {
+            "target": "nsis"
+        },
+        "nsis": {
+            "oneClick": true
         }
     },
     "dependencies": {
-        "electron-squirrel-startup": "^1.0.0",
-        "ytdl-core": "^2.1.0"
+        "humanize-duration": "^3.25.0",
+        "ytdl-core": "^4.3.0"
     },
     "devDependencies": {
-        "@electron-forge/cli": "6.0.0-beta.50",
-        "@electron-forge/maker-deb": "6.0.0-beta.50",
-        "@electron-forge/maker-rpm": "6.0.0-beta.50",
-        "@electron-forge/maker-squirrel": "6.0.0-beta.50",
-        "@electron-forge/maker-zip": "6.0.0-beta.50",
-        "electron": "8.2.3"
+        "electron": "8.2.3",
+        "electron-builder": "^22.9.1",
+        "electron-reloader": "^1.1.0"
     }
 }
