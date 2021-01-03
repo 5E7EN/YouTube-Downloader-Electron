@@ -32,8 +32,18 @@
             <div id="progressBar" class="progress">
                 <div id="loader" class="progress-bar" role="progressbar" style="width: 0%">0%</div>
             </div>
+
+            <p id="version" class="mt-4 text-muted"></p>
+        </div>
+
+        <!-- Notification Modal -->
+        <div id="notification" style="display: none">
+            <p id="notificationMsg"></p>
+
+            <button id="notificationCloseBtn" onClick="closeNotification()">Close</button>
+            <button id="notificationRestartBtn" onClick="restartApp()" style="display: none">Restart</button>
         </div>
     </body>
 
-    <script defer src="./assets/js/downloader.js"></script>
+    <script defer src="./assets/js/main.js"></script>
 </html>

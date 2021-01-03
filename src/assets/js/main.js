@@ -1,5 +1,8 @@
 // Modules
-const { dialog } = require('electron').remote;
+const {
+    ipcRenderer,
+    remote: { dialog }
+} = require('electron');
 const ytdl = require('ytdl-core');
 const humanizeDuration = require('humanize-duration');
 const fs = require('fs');
@@ -10,6 +13,10 @@ const dlBtn = document.getElementById('downloadBtn');
 const statusMsg = document.getElementById('statusMsg');
 const progressBar = document.getElementById('progressBar');
 const loader = document.getElementById('loader');
+const version = document.getElementById('version');
+const notification = document.getElementById('notification');
+const notificationMsg = document.getElementById('notificationMsg');
+const restartButton = document.getElementById('notificationRestartBtn');
 
 dlBtn.onclick = () => {
     console.info('User requested download...');
@@ -35,8 +42,13 @@ function setStatus(type, message) {
     statusMsg.innerHTML = message;
 }
 
-// Hide certain elements on page load
+// Initial config (page load)
 hideProgressBar();
+ipcRenderer.send('app_version');
+ipcRenderer.on('app_version', (event, arg) => {
+    ipcRenderer.removeAllListeners('app_version');
+    version.innerText = `Version ${arg.version}`;
+});
 
 async function downloadVideo(url = '') {
     if (!url || url.length === 0 || !/(https?:\/\/)?[\w#%+-.:=@~]{1,256}\.[a-z]{2,6}\b([\w#%&+-./:=?@~]*)/.test(url)) {
@@ -121,3 +133,25 @@ async function downloadVideo(url = '') {
         setStatus('danger', 'An error occured. See developer console.');
     });
 }
+
+function closeNotification() {
+    notification.classList.add('hidden');
+}
+
+function restartApp() {
+    ipcRenderer.send('restart_app');
+}
+
+// Auto-updater
+ipcRenderer.on('update_available', () => {
+    ipcRenderer.removeAllListeners('update_available');
+    notificationMsg.innerText = 'A new update is available. Downloading now...';
+    notification.classList.remove('hidden');
+});
+
+ipcRenderer.on('update_downloaded', () => {
+    ipcRenderer.removeAllListeners('update_downloaded');
+    notificationMsg.innerText = 'Update Downloaded. It will be installed on restart. Restart now?';
+    restartButton.classList.remove('hidden');
+    notification.classList.remove('hidden');
+});

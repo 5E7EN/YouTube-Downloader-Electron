@@ -1,33 +1,25 @@
 {
     "name": "youtubedownloader",
     "productName": "Youtube Downloader",
-    "version": "2.0.0",
+    "version": "2.1.0",
     "description": "YouTube Video Downloader",
     "author": "M Simon",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/5E7EN/YouTube-Downloader-Electron.git"
+    },
     "main": "src/index.js",
     "scripts": {
         "start": "electron .",
         "pack": " electron-builder build --dir",
         "pack:win": "electron-builder build --dir --win --x64",
-        "build": "electron-builder build",
-        "build:win": "electron-builder build --win nsis-web --x64"
+        "build": "electron-builder build --publish never",
+        "build:win": "electron-builder build --win nsis-web --x64",
+        "deploy": "electron-builder build --publish always"
     },
     "license": "MIT",
-    "build": {
-        "appId": "org.5e7en.youtubedownloader",
-        "files": [
-            "**/*",
-            "build/**",
-            "node_modules/**/*"
-        ],
-        "win": {
-            "target": "nsis"
-        },
-        "nsis": {
-            "oneClick": true
-        }
-    },
     "dependencies": {
+        "electron-updater": "^4.3.5",
         "humanize-duration": "^3.25.0",
         "ytdl-core": "^4.3.0"
     },
