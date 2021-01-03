@@ -1,4 +1,0 @@
-appId: org.5e7en.youtubedownloader
-publish:
-    provider: github
-    releaseType: release

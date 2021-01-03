@@ -1,7 +1,7 @@
 {
     "name": "youtubedownloader",
     "productName": "Youtube Downloader",
-    "version": "2.1.4",
+    "version": "2.1.5",
     "description": "YouTube Video Downloader",
     "author": "M Simon",
     "repository": {
@@ -18,6 +18,13 @@
         "deploy": "electron-builder build --publish always"
     },
     "license": "MIT",
+    "build": {
+        "appId": "org.5e7en.youtubedownloader",
+        "publish": {
+            "provider": "github",
+            "releaseType": "release"
+        }
+    },
     "dependencies": {
         "electron-log": "^4.3.1",
         "electron-updater": "^4.3.5",
