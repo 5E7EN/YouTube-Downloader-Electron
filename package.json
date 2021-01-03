@@ -31,7 +31,7 @@
         "ytdl-core": "^4.3.0"
     },
     "devDependencies": {
-        "electron": "8.2.3",
+        "electron": "8.5.2",
         "electron-builder": "^22.9.1",
         "electron-reloader": "^1.1.0"
     }
