@@ -5,9 +5,9 @@ const path = require('path');
 const createWindow = () => {
     const mainWindow = new BrowserWindow({
         title: 'YouTube Downloader by MSimon',
-        width: 600,
-        height: 400,
-        webPreferences: { nodeIntegration: true, devTools: true },
+        width: 650,
+        height: 450,
+        webPreferences: { nodeIntegration: true, enableRemoteModule: true, devTools: true },
         resizable: false
     });
 
