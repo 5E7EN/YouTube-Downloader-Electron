@@ -57,11 +57,7 @@ const createWindow = () => {
     Menu.setApplicationMenu(mainMenu);
 
     // Check for updates
-    mainWindow.once('ready-to-show', () => {
-        log.transports.file.level = 'debug';
-        autoUpdater.logger = log;
-        autoUpdater.checkForUpdatesAndNotify();
-    });
+    autoUpdater.checkForUpdatesAndNotify();
 };
 
 app.on('ready', createWindow);
