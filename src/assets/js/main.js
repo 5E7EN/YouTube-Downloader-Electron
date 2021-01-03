@@ -1,6 +1,5 @@
 // Modules
 const {
-    ipcRenderer,
     remote: { dialog }
 } = require('electron');
 const ytdl = require('ytdl-core');
@@ -14,9 +13,6 @@ const statusMsg = document.getElementById('statusMsg');
 const progressBar = document.getElementById('progressBar');
 const loader = document.getElementById('loader');
 const version = document.getElementById('version');
-const notification = document.getElementById('notification');
-const notificationMsg = document.getElementById('notificationMsg');
-const restartButton = document.getElementById('notificationRestartBtn');
 
 dlBtn.onclick = () => {
     console.info('User requested download...');
@@ -133,25 +129,3 @@ async function downloadVideo(url = '') {
         setStatus('danger', 'An error occured. See developer console.');
     });
 }
-
-function closeNotification() {
-    notification.classList.add('hidden');
-}
-
-function restartApp() {
-    ipcRenderer.send('restart_app');
-}
-
-// Auto-updater
-ipcRenderer.on('update_available', () => {
-    ipcRenderer.removeAllListeners('update_available');
-    notificationMsg.innerText = 'A new update is available. Downloading now...';
-    notification.classList.remove('hidden');
-});
-
-ipcRenderer.on('update_downloaded', () => {
-    ipcRenderer.removeAllListeners('update_downloaded');
-    notificationMsg.innerText = 'Update Downloaded. It will be installed on restart. Restart now?';
-    restartButton.classList.remove('hidden');
-    notification.classList.remove('hidden');
-});
