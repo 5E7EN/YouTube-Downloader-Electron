@@ -1,5 +1,6 @@
 const { app, BrowserWindow, Menu, shell, ipcMain } = require('electron');
 const { autoUpdater } = require('electron-updater');
+const log = require('electron-log');
 const path = require('path');
 
 const createWindow = () => {
@@ -17,6 +18,12 @@ const createWindow = () => {
         {
             label: 'File',
             submenu: [
+                {
+                    label: 'Check for Updates',
+                    click() {
+                        autoUpdater.checkForUpdates();
+                    }
+                },
                 { type: 'separator' },
                 {
                     label: 'Quit',
@@ -51,6 +58,8 @@ const createWindow = () => {
 
     // Check for updates
     mainWindow.once('ready-to-show', () => {
+        log.transports.file.level = 'debug';
+        autoUpdater.logger = log;
         autoUpdater.checkForUpdatesAndNotify();
     });
 };
