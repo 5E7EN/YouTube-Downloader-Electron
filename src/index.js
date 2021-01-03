@@ -1,6 +1,5 @@
 const { app, BrowserWindow, Menu, shell, ipcMain } = require('electron');
 const { autoUpdater } = require('electron-updater');
-const log = require('electron-log');
 const path = require('path');
 
 const createWindow = () => {
