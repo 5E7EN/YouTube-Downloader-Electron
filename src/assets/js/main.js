@@ -24,18 +24,18 @@ dlBtn.onclick = () => {
 };
 
 function showProgressBar() {
-    dlBtn.style.display = 'none';
-    progressBar.style.display = 'block';
+    dlBtn.classList.add('hidden');
+    progressBar.classList.remove('hidden');
 }
 
 function hideProgressBar() {
-    dlBtn.style.display = 'block';
-    progressBar.style.display = 'none';
+    dlBtn.classList.remove('hidden');
+    progressBar.classList.add('hidden');
 }
 
 function setStatus(type, message) {
-    if (statusMsg.style.display === 'none') {
-        statusMsg.style.display = 'block';
+    if (statusMsg.classList.contains('hidden')) {
+        statusMsg.classList.remove('hidden');
     }
 
     statusMsg.className = `alert alert-${type || 'secondary'}`;

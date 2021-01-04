@@ -22,14 +22,14 @@
         <div class="form-main">
             <h1 class="h2 mb-4 font-weight-normal">YouTube Video Downloader</h1>
 
-            <div id="statusMsg" class="alert alert-danger" role="alert" style="display: none"></div>
+            <div id="statusMsg" class="alert alert-danger hidden" role="alert"></div>
             <input type="text" id="downloadUrl" class="form-control" placeholder="Paste video link..." required autofocus />
 
             <div class="mt-3 mb-2">
                 <button id="downloadBtn" class="btn btn-lg btn-primary btn-block">Download</button>
             </div>
 
-            <div id="progressBar" class="progress">
+            <div id="progressBar" class="progress hidden">
                 <div id="loader" class="progress-bar" role="progressbar" style="width: 0%">0%</div>
             </div>
 
@@ -41,7 +41,7 @@
             <p id="notificationMsg"></p>
 
             <button id="notificationCloseBtn" class="btn btn-sm btn-secondary btn-block" onClick="closeNotification()">Close</button>
-            <button id="notificationRestartBtn" class="btn btn-sm btn-primary btn-block hideen" onClick="restartApp()">Restart</button>
+            <button id="notificationRestartBtn" class="btn btn-sm btn-primary btn-block hidden" onClick="restartApp()">Restart</button>
         </div>
     </body>
 
