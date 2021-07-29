@@ -20,7 +20,7 @@ const createWindow = () => {
                 {
                     label: 'Check for Updates',
                     click() {
-                        autoUpdater.checkForUpdates();
+                        autoUpdater.checkForUpdatesAndNotify();
                     }
                 },
                 { type: 'separator' },
@@ -57,6 +57,19 @@ const createWindow = () => {
 
     // Check for updates
     autoUpdater.checkForUpdatesAndNotify();
+
+    // Auto-updater Events
+    autoUpdater.on('error', (err) => {
+        console.error('[AutoUpdater] Encountered error:', err);
+    });
+
+    autoUpdater.on('update-available', (info) => {
+        console.info('[AutoUpdater] Update available:', info);
+    });
+
+    autoUpdater.on('update-not-available', (info) => {
+        console.info('[AutoUpdater] Update unavailable:', info);
+    });
 };
 
 app.on('ready', createWindow);
