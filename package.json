@@ -1,7 +1,7 @@
 {
     "name": "youtubedownloader",
     "productName": "Youtube Downloader",
-    "version": "2.2.2",
+    "version": "2.2.3",
     "description": "YouTube Video Downloader",
     "author": "M Simon",
     "repository": {
@@ -28,7 +28,7 @@
     "dependencies": {
         "electron-updater": "^4.3.5",
         "humanize-duration": "^3.25.0",
-        "ytdl-core": "^4.4.0"
+        "ytdl-core": "^4.9.0"
     },
     "devDependencies": {
         "electron": "^11.1.1",
